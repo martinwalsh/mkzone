@@ -129,8 +129,8 @@ def main():
     args = parse_args()
     template = jinja2.Template(TEMPLATE)
 
-    input_file = open(args.filename)
-    zone = yaml.safe_load(input_file)
+    with open(args.filename) as input_file:
+        zone = yaml.safe_load(input_file)
 
     zone['soa']['serial'] = str(int(time.time()))
 
